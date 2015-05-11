@@ -50,20 +50,62 @@ public class BatteryInfo extends Activity {
 
 
             float temperature1 = ((float)temperature)/10;
+            //Retrieving the temperature value, which is set by the user
+            String temp_value = null;
+            Intent iin= getIntent();
+            Bundle bundle = iin.getExtras();
+            if(bundle !=null)
+            {
+                temp_value =(String) bundle.get("value");
+            }
 
 
             batteryInfo.setText(
                     "Health: "+health+"\n"+
-                            "Icon Small:"+icon_small+"\n"+
-                            "Level: "+level+"\n"+
-                            "Plugged: "+plugged+"\n"+
-                            "Present: "+present+"\n"+
-                            "Scale: "+scale+"\n"+
-                            "Status: "+status+"\n"+
-                            "Technology: "+technology+"\n"+
-                            "Temperature: "+temperature1+"\n"+
-                            "Voltage: "+voltage+"\n");
+                    "Icon Small:"+icon_small+"\n"+
+                    "Level: "+level+"\n"+
+                    "Plugged: "+plugged+"\n"+
+                    "Present: "+present+"\n"+
+                    "Scale: "+scale+"\n"+
+                    "Status: "+status+"\n"+
+                    "Technology: "+technology+"\n"+
+                    "Temperature: "+temperature1+"\n"+
+                    "Voltage: "+voltage+"\n \n \n"+
+                    "And the temperature threshehold is: "+ temp_value+"\n" );
             imageBatteryState.setImageResource(icon_small);
+
+            int client_value = Integer.parseInt(temp_value);
+/*
+            if (temperature == client_value )
+            {
+                //Tell the user about the notification
+                String notif =" WARNING: CPU is throttled!";
+                Toast msg = Toast.makeText(getBaseContext(),notif, Toast.LENGTH_LONG);
+                msg.show();
+                msg.show();
+
+                // notification is selected
+                Intent intent2 = new Intent(this, NotificationReceiverActivity.class);
+                PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+                // Build notification
+                // Actions are just fake
+                Notification noti = new Notification.Builder(this)
+                        .setContentTitle("This is working Chada! Awesome ;)")
+                        .setContentText("Subject").setSmallIcon(R.drawable.icon)
+                        .setContentIntent(pIntent)
+                                //.setLargeIcon(R.drawable.Mario_icon)
+                        .addAction(R.drawable.icon, "Call", pIntent)
+                        .addAction(R.drawable.icon, "More", pIntent)
+                        .addAction(R.drawable.icon, "And more", pIntent).build();
+                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                // hide the notification after its selected
+                noti.flags |= Notification.FLAG_AUTO_CANCEL;
+
+                notificationManager.notify(0, noti);
+
+            }
+            */
         }
     };
 

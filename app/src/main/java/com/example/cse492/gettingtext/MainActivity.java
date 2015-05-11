@@ -67,14 +67,17 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 String str = eText.getText().toString();
 
+                /*
                 //Here starts the part where we are showing the toast
+
                 Toast msg = Toast.makeText(getBaseContext(),str, Toast.LENGTH_LONG);
                 msg.show();
                 msg.show();
+                */
                 //Here the button starts anew activity of showing all battery info
 
-                Intent myIntent = new Intent(MainActivity.this,
-                        BatteryInfo.class);
+                Intent myIntent = new Intent(MainActivity.this,BatteryInfo.class);
+                myIntent.putExtra("value",str );
                 startActivity(myIntent);
 
             }
