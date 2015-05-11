@@ -1,15 +1,21 @@
 package com.example.cse492.gettingtext;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 //public class BatteryInformation extends Activity {
@@ -60,6 +66,37 @@ public class BatteryInfo extends Activity {
             imageBatteryState.setImageResource(icon_small);
         }
     };
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    public void createNotification(View view) {
+        // Prepare intent which is triggered if the
+        // notification is selected
+        Intent intent = new Intent(this, NotificationReceiverActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        // Build notification
+        // Actions are just fake
+        Notification noti = new Notification.Builder(this)
+                .setContentTitle("This is working Chada! Awesome ;)")
+                .setContentText("Subject").setSmallIcon(R.drawable.icon)
+                .setContentIntent(pIntent)
+                        //.setLargeIcon(R.drawable.Mario_icon)
+                .addAction(R.drawable.icon, "Call", pIntent)
+                .addAction(R.drawable.icon, "More", pIntent)
+                .addAction(R.drawable.icon, "And more", pIntent).build();
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // hide the notification after its selected
+        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        notificationManager.notify(0, noti);
+
+        //Tell the user about the notification
+        String notif =" WARNING: CPU is throttled!";
+        Toast msg = Toast.makeText(getBaseContext(),notif, Toast.LENGTH_LONG);
+        msg.show();
+        msg.show();
+
+    }
 
 
 }
