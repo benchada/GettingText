@@ -72,11 +72,11 @@ public class MainActivity extends Activity {
                 msg.show();
                 msg.show();
                 //Here the button starts anew activity of showing all battery info
-/*
+
                 Intent myIntent = new Intent(MainActivity.this,
                         BatteryInfo.class);
                 startActivity(myIntent);
-*/
+
             }
         });
     }

@@ -1,4 +1,4 @@
-/*package com.example.cse492.gettingtext;
+package com.example.cse492.gettingtext;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -63,5 +63,3 @@ public class BatteryInfo extends Activity {
 
 
 }
-
-*/
