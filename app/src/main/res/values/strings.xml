@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<string name="app_name">GUIDemo1</string>
+<string name="action_settings">Settings</string>
+<string name="question">At what temperature value, do you want your CPU to be throttled? \n \n
+                                 Suggested Value is 40 °C</string>
+<string name="OK">Ok</string>
+<string name="sugg_value">40</string>
+
+</resources>
